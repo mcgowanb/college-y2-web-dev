@@ -1,0 +1,25 @@
+﻿form {
+    width: 50%;
+    margin: 0 auto;
+    padding: 2em;
+    border: 1px solid;
+}
+
+label {
+    width: 10em;
+    display: inline-block;
+    text-align: right;
+}
+
+#submit {
+    margin-top: 10px;
+    margin-left: 2px;
+}
+
+#message {
+    width: 50%;
+    text-align: center;
+}
+#compute{
+    width: 50%;
+}

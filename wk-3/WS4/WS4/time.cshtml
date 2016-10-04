@@ -1,0 +1,103 @@
+﻿@using System.Text.RegularExpressions
+
+@{
+    String month = Request.QueryString["month"] ?? "";
+    String season = Request.QueryString["season"] ?? "";
+    String selection = Request.QueryString["day"] ?? "";
+    String location = Request.QueryString["county"] ?? "";
+
+
+    String message = String.Format("You have selected {0} as a day and {1} as a month, and the following seasons {2}", selection, month, season);
+    String message2 = String.Format("You are located in {0} ", location);
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="~/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+            <form method="GET">
+                <div class="col-xs-4">
+                    <fieldset>
+                        <legend>Please choose a day</legend>
+                        <div>
+                            <input type="radio" name="day" id="mon" value="Monday" @(selection == "Monday" ? "checked" : "") /><label for="mon">Monday</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="day" id="tue" value="Tuesday" @(selection == "Tuesday" ? "checked" : "") /><label for="tue">Tuesday</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="day" id="wed" value="Wednesday" @(selection == "Wednesday" ? "checked" : "") /><label for="wed">Wednesday</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="day" id="thu" value="Thursday" @(selection == "Thursday" ? "checked" : "") /><label for="thu">Thursday</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="day" id="fri" value="Friday" @(selection == "Friday" ? "checked" : "") /><label for="fri">Friday</label>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-xs-4">
+                    <div>
+                        <label for="months">Please Select a Month</label>
+                        <select id="months" name="month">
+                            <option @(month == "January" ? "selected" : "")>January</option>
+                            <option @(month == "February" ? "selected" : "")>February</option>
+                            <option @(month == "March" ? "selected" : "")>March</option>
+                            <option @(month == "April" ? "selected" : "")>April</option>
+                            <option @(month == "May" ? "selected" : "")>May</option>
+                            <option @(month == "June" ? "selected" : "")>June</option>
+                            <option @(month == "July" ? "selected" : "")>July</option>
+                            <option @(month == "August" ? "selected" : "")>August</option>
+                            <option @(month == "September" ? "selected" : "")>September</option>
+                            <option @(month == "October" ? "selected" : "")>October</option>
+                            <option @(month == "November" ? "selected" : "")>November</option>
+                            <option @(month == "December" ? "selected" : "")>December</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="county">Please Select a County</label>
+                        <input list="counties" name="county" value="@location">
+                        <datalist id="counties">
+                            <option value="Sligo">
+                            <option value="Dublin">
+                            <option value="Donegal">
+                            <option value="Derry">
+                            <option value="Kerry">
+                            <option value="Kildare">
+                            <option value="Kerry">
+                            <option value="Leitrim">
+                            <option value="Longford">
+                            <option value="Limerick">
+                            <option value="Louth">
+                        </datalist>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div>
+                        <label for="seasons">Please Select a Season</label>
+                        <select id="season" name="season" multiple="multiple">
+                            <option @(Regex.Matches(season, "Spring").Count > 0 ? "selected" : "")>Spring</option>
+                            <option @(Regex.Matches(season, "Summer").Count > 0 ? "selected" : "")>Summer</option>
+                            <option @(Regex.Matches(season, "Autumn").Count > 0 ? "selected" : "")>Autumn</option>
+                            <option @(Regex.Matches(season, "Winter").Count > 0 ? "selected" : "")>Winter</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <input type="submit" class="btn btn-xs btn-success" value="Submit" />
+                    <hr />
+            </form>
+            <p>@message</p>
+            <p>@message2</p>
+
+        </div>
+    </div>
+
+</body>
+</html>

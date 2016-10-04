@@ -1,0 +1,79 @@
+﻿@{
+    String message;
+
+
+    decimal number1 = Request["n1"].AsDecimal();
+    decimal number2 = Request["n2"].AsDecimal();
+    decimal answer;
+    String action = Request["compute-type"];
+
+    String actionName = "unknown";
+
+    switch (action)
+    {
+        case "add":
+            answer = number1 + number2;
+            actionName = "added to";
+            break;
+        case "sub":
+            answer = number2 - number1;
+            actionName = "subtracted from";
+            break;
+        case "mul":
+            answer = number1 * number2;
+            actionName = "multiplied by";
+            break;
+        case "div":
+            answer = number1 / number2;
+            actionName = "divided by";
+            break;
+        default:
+            answer = 0;
+            break;
+    }
+
+
+
+    message = String.Format("{0} {3} {1} is {2}", number1, number2, answer, actionName);
+    if (action == null)
+    {
+        message = "No Option selected at time of input, please select an option and try again";
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="css/razorstyle.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Here's a title</title>
+</head>
+<body>
+    <form method="GET">
+        <fieldset>
+            <div class="entry">
+                <label for="n1">Number 1</label>
+                <input type="number" name="n1" id="n1" step=".1" value="@number1" />
+            </div>
+            <div class="entry">
+                <label for="n2">Number 2</label>
+                <input type="number" name="n2" id="n2" step=".1" value="@number2" />
+            </div>
+
+            <fieldset>
+                <legend>Please select the action you want to perform</legend>
+                <div class="radio-buttoons"><input type="radio" name="compute-type" id="add" value="add" /><label for="add">Add </label></div>
+                <div class="radio-buttoons"><input type="radio" name="compute-type" id="sub" value="sub" /><label for="sub">Subtract</label></div>
+                <div class="radio-buttoons"><input type="radio" name="compute-type" id="mul" value="mul" /><label for="mul">Multiply</label></div>
+                <div class="radio-buttoons"><input type="radio" name="compute-type" id="div" value="div" /><label for="div">Divide</label></div>
+            </fieldset>
+
+
+        </fieldset>
+        <div id="compute">
+            <input type="submit" value="Compute" id="submit" class="btn btn-xs btn-info" />
+        </div>
+        <div id="message">@message</div>
+    </form>
+
+</body>
+</html>

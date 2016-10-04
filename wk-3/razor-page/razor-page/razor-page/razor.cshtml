@@ -1,0 +1,14 @@
+﻿@{ 
+    var currentDateTime = DateTime.Now;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <h1> Hello, The current date is: @currentDateTime.ToString("d")</h1>
+        <h2> The current day is: @currentDateTime.ToString("dddd")</h2>
+        <h3> The current time is: @currentDateTime.ToString("H:mm:ss")</h3>
+    </body>
+</html>

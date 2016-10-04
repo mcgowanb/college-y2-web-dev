@@ -1,0 +1,225 @@
+﻿@using System.Text.RegularExpressions
+@{
+    String culturalInterests = "";
+    String sportingInterests = "";
+
+
+    String firstName = Request.Form["fname"];
+    String lastName = Request.Form["lname"];
+    String dateOfBirth = Request.Form["dob"];
+    String ppsn = Request.Form["ppsn"];
+    String email = Request.Form["email"];
+    String phoneNumber = Request.Form["phone"];
+    String height = Request.Form["height"];
+    String password = Request.Form["pass"];
+    String passwordConfirm = Request.Form["pass-conf"];
+
+    String gender = Request.Form["gender"];
+    String relationshipStatus = Request.Form["relationship"];
+
+    if (IsPost)
+    {
+        sportingInterests = Request.Form["sports"] ?? "";
+        culturalInterests = Request.Form["culture"] ?? "";
+    }
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/bootstrap.css" rel="stylesheet" />
+    <title>Funky's Dating Site</title>
+    <link href="~/style.css" rel="stylesheet" />
+</head>
+<body>
+    <form method="post">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Welcome to Funky's dating website, Please complete the following information to register:</h2>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label for="fname"> First Name</label>
+                    <input type="text" name="fname" id="fname" class="form-control" value="@firstName" />
+                </div>
+                <div class="form-group">
+                    <label for="lname"> Last Name</label>
+                    <input type="text" name="lname" id="lname" class="form-control" value="@lastName" />
+                </div>
+                <div class="form-group">
+                    <label for="dob"> Date Of Birth</label>
+                    <input type="date" name="dob" id="dob" class="form-control" value="@dateOfBirth" />
+                </div>
+                <div class="form-group">
+                    <label for="pps"> PPS Number</label>
+                    <input type="text" name="ppsn" id="pps" class="form-control" value="@ppsn" />
+                </div>
+                <div class="form-group">
+                    <label for="fname"> Email</label>
+                    <input type="email" name="email" id="email" class="form-control" value="@email" />
+                </div>
+                <div class="form-group">
+                    <label for="phone"> Phone Number:</label>
+                    <input type="tel" name="phone" id="phone" class="form-control" value="@phoneNumber" />
+                </div>
+                <div class="form-group">
+                    <label for="height"> Height:</label>
+                    <input type="text" name="height" id="height" class="form-control" value="@height" />
+                </div>
+                <div class="form-group">
+                    <label for="pass"> Password</label>
+                    <input type="password" name="pass" id="pass" class="form-control" value="@password" />
+                </div>
+                <div class="form-group">
+                    <label for="pass-conf"> Confirm Password</label>
+                    <input type="password" name="pass-conf" id="pass-conf" class="form-control" value="@passwordConfirm" />
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <fieldset>
+                    <legend>Gender:</legend>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="gender" id="optionsgender1" value="male" @(gender == "male" ? "checked" : "")>
+                            Male
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="gender" id="optionsgender2" value="female" @(gender == "female" ? "checked" : "")>
+                            Female
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="gender" id="optionsgender3" value="other" @(gender == "other" ? "checked" : "")>
+                            Other
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Relationship Status:</legend>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="relationship" id="optionsrelation1" value="neverMarried" @(relationshipStatus == "neverMarried" ? "checked" : "")>
+                            Never Married
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="relationship" id="optionsrelation2" value="widowed" @(relationshipStatus == "widowed" ? "checked" : "")>
+                            Widowed
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="relationship" id="optionsrelation3" value="divorced" @(relationshipStatus == "divorced" ? "checked" : "")>
+                            Divorced
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="relationship" id="optionsrelation3" value="separated" @(relationshipStatus == "separated" ? "checked" : "")>
+                            Separated
+                        </label>
+                    </div>
+                </fieldset>
+
+
+                <label for="sports">Sporting Interests</label>
+                <select name="sports" id="sports" multiple class="form-control" size="8">
+                    <option></option>
+                    <option @(Regex.Matches(sportingInterests, "Hiking").Count > 0 ? "selected" : "")>Hiking</option>
+                    <option @(Regex.Matches(sportingInterests, "Gym Training").Count > 0 ? "selected" : "")>Gym Training</option>
+                    <option @(Regex.Matches(sportingInterests, "Cycling").Count > 0 ? "selected" : "")>Cycling</option>
+                    <option @(Regex.Matches(sportingInterests, "Dancing").Count > 0 ? "selected" : "")>Dancing</option>
+                    <option @(Regex.Matches(sportingInterests, "Swimming").Count > 0 ? "selected" : "")>Swimming</option>
+                    <option @(Regex.Matches(sportingInterests, "Running").Count > 0 ? "selected" : "")>Running</option>
+                    <option @(Regex.Matches(sportingInterests, "Tennis").Count > 0 ? "selected" : "")>Tennis</option>
+                    <option @(Regex.Matches(sportingInterests, "Rugby").Count > 0 ? "selected" : "")>Rugby</option>
+                    <option @(Regex.Matches(sportingInterests, "Winter Sports").Count > 0 ? "selected" : "")>Winter Sports</option>
+                    <option @(Regex.Matches(sportingInterests, "Badminton").Count > 0 ? "selected" : "")>Badminton</option>
+                    <option @(Regex.Matches(sportingInterests, "GAA").Count > 0 ? "selected" : "")>GAA</option>
+                    <option @(Regex.Matches(sportingInterests, "Soccer").Count > 0 ? "selected" : "")>Soccer</option>
+                </select>
+
+                <label for="culture">Cultural Interests</label>
+                <select name="culture" id="culture" multiple class="form-control" size="8">
+                    <option></option>
+                    <option @(Regex.Matches(culturalInterests, "Food").Count > 0 ? "selected" : "")>Food</option>
+                    <option @(Regex.Matches(culturalInterests, "Fine Wine").Count > 0 ? "selected" : "")>Fine Wine</option>
+                    <option @(Regex.Matches(culturalInterests, "Pop Music").Count > 0 ? "selected" : "")>Pop Music</option>
+                    <option @(Regex.Matches(culturalInterests, "Rock").Count > 0 ? "selected" : "")>Rock</option>
+                    <option @(Regex.Matches(culturalInterests, "Classical Music").Count > 0 ? "selected" : "")>Classical Music</option>
+                    <option @(Regex.Matches(culturalInterests, "Theatre").Count > 0 ? "selected" : "")>Theatre</option>
+                    <option @(Regex.Matches(culturalInterests, "Film").Count > 0 ? "selected" : "")>Film</option>
+                    <option @(Regex.Matches(culturalInterests, "Literature").Count > 0 ? "selected" : "")>Literature</option>
+                    <option @(Regex.Matches(culturalInterests, "Gaming").Count > 0 ? "selected" : "")>Gaming</option>
+                    <option @(Regex.Matches(culturalInterests, "Traditional Music").Count > 0 ? "selected" : "")>Traditional Music</option>
+                    <option @(Regex.Matches(culturalInterests, "Dancing").Count > 0 ? "selected" : "")>Dancing</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <button class="btn btn-md btn-success" type="submit">Sign me up!!!</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                @{
+                    if (IsPost)
+                    {
+                        <div class="row">
+                            <h2>You have made the following selections:</h2>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <ul>
+                                    <li><strong>First Name:</strong> @firstName</li>
+                                    <li><strong>Last Name: </strong>@lastName</li>
+                                    <li><strong>Date Of Birth: </strong>@dateOfBirth</li>
+                                    <li><strong>PPS Number: </strong>@ppsn</li>
+                                    <li><strong>Email: </strong>@email</li>
+                                    <li><strong>Phone Number: </strong>@phoneNumber</li>
+                                    <li><strong>Height: </strong>@height</li>
+                                    <li><strong>Password: </strong>@password</li>
+                                    <li><strong>Password Confirmation: </strong>@passwordConfirm</li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <ul>
+                                    <li><strong>Gender:</strong> @gender</li>
+                                    <li><strong>Relationship Status: </strong>@relationshipStatus</li>
+                                </ul>
+                                <label>Sporting Interests</label>
+                                <ul>
+                                    @{
+                                        String[] sportsAry = sportingInterests.Split(',');
+                                        foreach (String elem in sportsAry)
+                                        {
+                                            <li>@elem</li>
+                                        }
+                                    }
+                                </ul>
+
+                                <label>Cultural Interests</label>
+                                <ul>
+                                    @{
+                                        String[] cultureAry = culturalInterests.Split(',');
+                                        foreach (String elem in cultureAry)
+                                        {
+                                            <li>@elem</li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </form>
+</body>
+</html>

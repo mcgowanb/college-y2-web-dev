@@ -1,0 +1,78 @@
+﻿@{
+    String message = "";
+
+
+    int number1 = Request.QueryString["n1"].AsInt();
+    int number2 = Request["n2"].AsInt();
+    int answer = 0;
+    String action = Request["compute-type"];
+
+    String actionName = "unknown";
+
+    switch (action)
+    {
+        case "add":
+            answer = number1 + number2;
+            actionName = "added to";
+            break;
+        case "sub":
+            answer = number2 - number1;
+            actionName = "subtracted from";
+            break;
+        case "mul":
+            answer = number1 * number2;
+            actionName = "multiplied by";
+            break;
+        case "div":
+            answer = number1 / number2;
+            actionName = "divided by";
+            break;
+        default:
+            answer = 0;
+            break;
+    }
+
+
+
+    message = String.Format("{0} {3} {1} is {2}", number1, number2, answer, actionName);
+    if (action == null)
+    {
+        message = "No Option selected at time of input, please select an option and try again";
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/css/razorstyle.css" rel="stylesheet" />
+    <title></title>
+</head>
+<body>
+    <form method="GET">
+        <fieldset>
+            <div class="entry">
+                <label for="n1">Number 1</label>
+                <input type="number" name="n1" id="n1" />
+            </div>
+            <div class="entry">
+                <label for="n2">Number 2</label>
+                <input type="number" name="n2" id="n2" />
+            </div>
+
+            <fieldset>
+                <legend>Please select the action you want to perform</legend>
+                <div><label for="add">Add</label><input type="radio" name="compute-type" id="add" value="add" /></div>
+                <div><label for="sub">Subtract</label><input type="radio" name="compute-type" id="sub" value="sub" /></div>
+                <div><label for="mul">Multiply</label><input type="radio" name="compute-type" id="mul" value="mul" /></div>
+                <div><label for="div">Divide</label><input type="radio" name="compute-type" id="div" value="div" /></div>
+            </fieldset>
+
+
+        </fieldset>
+        <div id="compute">
+            <input type="submit" value="Compute" id="submit" />
+        </div>
+        <div id="message">@message</div>
+    </form>
+
+</body>
+</html>

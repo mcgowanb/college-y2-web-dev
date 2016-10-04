@@ -1,0 +1,45 @@
+﻿body {
+    background-color: antiquewhite;
+}
+
+ol > li {
+    font-size: 1.4em;
+}
+
+fieldset {
+}
+
+form {
+    width: 25em;
+    background-color: burlywood;
+    margin: 0 auto;
+    padding: 4em;
+}
+
+label {
+    width: 10em;
+    display: inline-block;
+    text-align: right;
+    padding-right: 1em;
+}
+
+input[type="text"] {
+    margin-bottom: .5em;
+}
+input:focus{
+    background-color: lightgrey;
+}
+
+input[type="submit"] {
+    float: right;
+    margin-top: 1em;
+}
+
+fieldset label {
+    width: 1em;
+}
+
+fieldset {
+    width: 15em;
+    margin: 0 auto;
+}
