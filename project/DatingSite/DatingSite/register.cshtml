@@ -24,7 +24,6 @@
     }
 }
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +37,7 @@
             <div class="col-xs-12">
                 <h2>Welcome to Funky's dating website, Please complete the following information to register:</h2>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="col-xs-12">
                 <div class="form-group">
                     <label for="fname"> First Name</label>
                     <input type="text" name="fname" id="fname" class="form-control" value="@firstName" />
@@ -75,9 +74,7 @@
                     <label for="pass-conf"> Confirm Password</label>
                     <input type="password" name="pass-conf" id="pass-conf" class="form-control" value="@passwordConfirm" />
                 </div>
-            </div>
 
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <fieldset>
                     <legend>Gender:</legend>
                     <div class="radio">
@@ -99,7 +96,6 @@
                         </label>
                     </div>
                 </fieldset>
-
                 <fieldset>
                     <legend>Relationship Status:</legend>
                     <div class="radio">
@@ -128,38 +124,106 @@
                     </div>
                 </fieldset>
 
+                <fieldset>
+                    <legend>Sporting Interests:</legend>
+                    <div class="checkbox">
+                        <label for="hiking">
+                            <input type="checkbox" id="hiking" value="Hiking" name="sports" @(sportingInterests.Contains("Hiking") ? "checked" : "")>
+                            Hiking
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="gym">
+                            <input type="checkbox" id="gym" value="Gym Training" name="sports" @(sportingInterests.Contains("Gym Training") ? "checked" : "")>
+                            Gym Training
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="cycling">
+                            <input type="checkbox" id="cycling" value="Cycling" name="sports" @(sportingInterests.Contains("Cycling") ? "checked" : "")>
+                            Cycling
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="dancing">
+                            <input type="checkbox" id="dancing" value="Dancing" name="sports" @(sportingInterests.Contains("Dancing") ? "checked" : "")>
+                            Dancing
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="swimming">
+                            <input type="checkbox" id="swimming" value="Swimming" name="sports" @(sportingInterests.Contains("Swimming") ? "checked" : "")>
+                            Swimming
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="running">
+                            <input type="checkbox" id="running" value="Running" name="sports" @(sportingInterests.Contains("Running") ? "checked" : "")>
+                            Running
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="tennis">
+                            <input type="checkbox" id="tennis" value="Tennis" name="sports" @(sportingInterests.Contains("Tennis") ? "checked" : "")>
+                            Tennis
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="rugby">
+                            <input type="checkbox" id="rugby" value="Rugby" name="sports" @(sportingInterests.Contains("Rugby") ? "checked" : "")>
+                            Rugby
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="winterS">
+                            <input type="checkbox" id="winterS" value="Winter Sports" name="sports" @(sportingInterests.Contains("Winter Sports") ? "checked" : "")>
+                            Winter Sports
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="badm">
+                            <input type="checkbox" id="badm" value="Badminton" name="sports" @(sportingInterests.Contains("Badminton") ? "checked" : "")>
+                            Badminton
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="gaa">
+                            <input type="checkbox" id="gaa" value="Gaa" name="sports" @(sportingInterests.Contains("Gaa") ? "checked" : "")>
+                            Gaa
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="soccer">
+                            <input type="checkbox" id="soccer" value="Soccer" name="sports" @(sportingInterests.Contains("Soccer") ? "checked" : "")>
+                            Soccer
+                        </label>
+                    </div>
+                </fieldset>
 
-                <label for="sports">Sporting Interests</label>
+                @*<label for="sports">Sporting Interests</label>
                 <select name="sports" id="sports" multiple class="form-control" size="8">
                     <option></option>
-                    <option @(Regex.Matches(sportingInterests, "Hiking").Count > 0 ? "selected" : "")>Hiking</option>
-                    <option @(Regex.Matches(sportingInterests, "Gym Training").Count > 0 ? "selected" : "")>Gym Training</option>
-                    <option @(Regex.Matches(sportingInterests, "Cycling").Count > 0 ? "selected" : "")>Cycling</option>
-                    <option @(Regex.Matches(sportingInterests, "Dancing").Count > 0 ? "selected" : "")>Dancing</option>
-                    <option @(Regex.Matches(sportingInterests, "Swimming").Count > 0 ? "selected" : "")>Swimming</option>
-                    <option @(Regex.Matches(sportingInterests, "Running").Count > 0 ? "selected" : "")>Running</option>
-                    <option @(Regex.Matches(sportingInterests, "Tennis").Count > 0 ? "selected" : "")>Tennis</option>
-                    <option @(Regex.Matches(sportingInterests, "Rugby").Count > 0 ? "selected" : "")>Rugby</option>
-                    <option @(Regex.Matches(sportingInterests, "Winter Sports").Count > 0 ? "selected" : "")>Winter Sports</option>
-                    <option @(Regex.Matches(sportingInterests, "Badminton").Count > 0 ? "selected" : "")>Badminton</option>
-                    <option @(Regex.Matches(sportingInterests, "GAA").Count > 0 ? "selected" : "")>GAA</option>
-                    <option @(Regex.Matches(sportingInterests, "Soccer").Count > 0 ? "selected" : "")>Soccer</option>
-                </select>
 
+                    <option @(sportingInterests.Contains("Rugby") ? "selected" : "")>Rugby</option>
+                    <option @(sportingInterests.Contains("Winter Sports") ? "selected" : "")>Winter Sports</option>
+                    <option @(sportingInterests.Contains("Badminton") ? "selected" : "")>Badminton</option>
+                    <option @(sportingInterests.Contains("GAA") ? "selected" : "")>GAA</option>
+                    <option @(sportingInterests.Contains("Soccer") ? "selected" : "")>Soccer</option>
+                </select>*@
                 <label for="culture">Cultural Interests</label>
                 <select name="culture" id="culture" multiple class="form-control" size="8">
                     <option></option>
-                    <option @(Regex.Matches(culturalInterests, "Food").Count > 0 ? "selected" : "")>Food</option>
-                    <option @(Regex.Matches(culturalInterests, "Fine Wine").Count > 0 ? "selected" : "")>Fine Wine</option>
-                    <option @(Regex.Matches(culturalInterests, "Pop Music").Count > 0 ? "selected" : "")>Pop Music</option>
-                    <option @(Regex.Matches(culturalInterests, "Rock").Count > 0 ? "selected" : "")>Rock</option>
-                    <option @(Regex.Matches(culturalInterests, "Classical Music").Count > 0 ? "selected" : "")>Classical Music</option>
-                    <option @(Regex.Matches(culturalInterests, "Theatre").Count > 0 ? "selected" : "")>Theatre</option>
-                    <option @(Regex.Matches(culturalInterests, "Film").Count > 0 ? "selected" : "")>Film</option>
-                    <option @(Regex.Matches(culturalInterests, "Literature").Count > 0 ? "selected" : "")>Literature</option>
-                    <option @(Regex.Matches(culturalInterests, "Gaming").Count > 0 ? "selected" : "")>Gaming</option>
-                    <option @(Regex.Matches(culturalInterests, "Traditional Music").Count > 0 ? "selected" : "")>Traditional Music</option>
-                    <option @(Regex.Matches(culturalInterests, "Dancing").Count > 0 ? "selected" : "")>Dancing</option>
+                    <option @(culturalInterests.Contains("Food") ? "selected" : "")>Food</option>
+                    <option @(culturalInterests.Contains("Fine Wine") ? "selected" : "")>Fine Wine</option>
+                    <option @(culturalInterests.Contains("Pop Music") ? "selected" : "")>Pop Music</option>
+                    <option @(culturalInterests.Contains("Rock") ? "selected" : "")>Rock</option>
+                    <option @(culturalInterests.Contains("Classical Music") ? "selected" : "")>Classical Music</option>
+                    <option @(culturalInterests.Contains("Theatre") ? "selected" : "")>Theatre</option>
+                    <option @(culturalInterests.Contains("Film") ? "selected" : "")>Film</option>
+                    <option @(culturalInterests.Contains("Literature") ? "selected" : "")>Literature</option>
+                    <option @(culturalInterests.Contains("Gaming") ? "selected" : "")>Gaming</option>
+                    <option @(culturalInterests.Contains("Traditional Music") ? "selected" : "")>Traditional Music</option>
+                    <option @(culturalInterests.Contains("Dancing") ? "selected" : "")>Dancing</option>
                 </select>
             </div>
         </div>
@@ -203,7 +267,6 @@
                                         }
                                     }
                                 </ul>
-
                                 <label>Cultural Interests</label>
                                 <ul>
                                     @{
@@ -216,7 +279,7 @@
                                 </ul>
                             </div>
                         </div>
-                    }
+                                        }
                 }
             </div>
         </div>
