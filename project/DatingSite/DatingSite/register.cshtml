@@ -200,31 +200,69 @@
                     </div>
                 </fieldset>
 
-                @*<label for="sports">Sporting Interests</label>
-                <select name="sports" id="sports" multiple class="form-control" size="8">
-                    <option></option>
-
-                    <option @(sportingInterests.Contains("Rugby") ? "selected" : "")>Rugby</option>
-                    <option @(sportingInterests.Contains("Winter Sports") ? "selected" : "")>Winter Sports</option>
-                    <option @(sportingInterests.Contains("Badminton") ? "selected" : "")>Badminton</option>
-                    <option @(sportingInterests.Contains("GAA") ? "selected" : "")>GAA</option>
-                    <option @(sportingInterests.Contains("Soccer") ? "selected" : "")>Soccer</option>
-                </select>*@
-                <label for="culture">Cultural Interests</label>
-                <select name="culture" id="culture" multiple class="form-control" size="8">
-                    <option></option>
-                    <option @(culturalInterests.Contains("Food") ? "selected" : "")>Food</option>
-                    <option @(culturalInterests.Contains("Fine Wine") ? "selected" : "")>Fine Wine</option>
-                    <option @(culturalInterests.Contains("Pop Music") ? "selected" : "")>Pop Music</option>
-                    <option @(culturalInterests.Contains("Rock") ? "selected" : "")>Rock</option>
-                    <option @(culturalInterests.Contains("Classical Music") ? "selected" : "")>Classical Music</option>
-                    <option @(culturalInterests.Contains("Theatre") ? "selected" : "")>Theatre</option>
-                    <option @(culturalInterests.Contains("Film") ? "selected" : "")>Film</option>
-                    <option @(culturalInterests.Contains("Literature") ? "selected" : "")>Literature</option>
-                    <option @(culturalInterests.Contains("Gaming") ? "selected" : "")>Gaming</option>
-                    <option @(culturalInterests.Contains("Traditional Music") ? "selected" : "")>Traditional Music</option>
-                    <option @(culturalInterests.Contains("Dancing") ? "selected" : "")>Dancing</option>
-                </select>
+                <fieldset>
+                    <legend>Cultural Interests:</legend>
+                    <div class="checkbox">
+                        <label for="food">
+                            <input type="checkbox" id="food" value="Food" name="culture" @(culturalInterests.Contains("Food") ? "checked" : "")>
+                            Food
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="wine">
+                            <input type="checkbox" id="wine" value="Fine Wine" name="culture" @(culturalInterests.Contains("Fine Wine") ? "checked" : "")>
+                            Fine Wine
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="pMusic">
+                            <input type="checkbox" id="pMusic" value="Pop Music" name="culture" @(culturalInterests.Contains("Pop Music") ? "checked" : "")>
+                            Pop Music
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="rMusic">
+                            <input type="checkbox" id="rMusic" value="Rock Music" name="culture" @(culturalInterests.Contains("Rock Music") ? "checked" : "")>
+                            Rock Music
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="cMusic">
+                            <input type="checkbox" id="cMusic" value="Classical Music" name="culture" @(culturalInterests.Contains("Classical Music") ? "checked" : "")>
+                            Classical Music
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="theatre">
+                            <input type="checkbox" id="theatre" value="Theatre" name="culture" @(culturalInterests.Contains("Theatre") ? "checked" : "")>
+                            Theatre
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="lit">
+                            <input type="checkbox" id="lit" value="Literature" name="culture" @(culturalInterests.Contains("Literature") ? "checked" : "")>
+                            Literature
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="gaming">
+                            <input type="checkbox" id="gaming" value="Gaming" name="culture" @(culturalInterests.Contains("Gaming") ? "checked" : "")>
+                            Gaming
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="trad">
+                            <input type="checkbox" id="trad" value="Traditional Music" name="culture" @(culturalInterests.Contains("Traditional Music") ? "checked" : "")>
+                            Traditional Music
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label for="cDancing">
+                            <input type="checkbox" id="cDancing" value="Dancing" name="culture" @(culturalInterests.Contains("Dancing") ? "checked" : "")>
+                            Dancing
+                        </label>
+                    </div>
+                </fieldset>
             </div>
         </div>
         <div class="row">
