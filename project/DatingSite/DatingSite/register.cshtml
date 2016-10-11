@@ -63,7 +63,7 @@
                     <input type="tel" name="phone" id="phone" class="form-control" value="@phoneNumber" />
                 </div>
                 <div class="form-group">
-                    <label for="height"> Height:</label>
+                    <label for="height"> Height: (cm)</label>
                     <input type="text" name="height" id="height" class="form-control" value="@height" />
                 </div>
                 <div class="form-group">
@@ -79,19 +79,19 @@
                     <legend>Gender:</legend>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="gender" id="optionsgender1" value="male" @(gender == "male" ? "checked" : "")>
+                            <input type="radio" name="gender" id="optionsgender1" value="Male" @(gender == "Male" ? "checked" : "")>
                             Male
                         </label>
                     </div>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="gender" id="optionsgender2" value="female" @(gender == "female" ? "checked" : "")>
+                            <input type="radio" name="gender" id="optionsgender2" value="Female" @(gender == "Female" ? "checked" : "")>
                             Female
                         </label>
                     </div>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="gender" id="optionsgender3" value="other" @(gender == "other" ? "checked" : "")>
+                            <input type="radio" name="gender" id="optionsgender3" value="Other" @(gender == "Other" ? "checked" : "")>
                             Other
                         </label>
                     </div>
@@ -100,169 +100,178 @@
                     <legend>Relationship Status:</legend>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="relationship" id="optionsrelation1" value="neverMarried" @(relationshipStatus == "neverMarried" ? "checked" : "")>
+                            <input type="radio" name="relationship" id="optionsrelation1" value="Never Married" @(relationshipStatus == "Never Married" ? "checked" : "")>
                             Never Married
                         </label>
                     </div>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="relationship" id="optionsrelation2" value="widowed" @(relationshipStatus == "widowed" ? "checked" : "")>
+                            <input type="radio" name="relationship" id="optionsrelation2" value="Widowed" @(relationshipStatus == "Widowed" ? "checked" : "")>
                             Widowed
                         </label>
                     </div>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="relationship" id="optionsrelation3" value="divorced" @(relationshipStatus == "divorced" ? "checked" : "")>
+                            <input type="radio" name="relationship" id="optionsrelation3" value="Divorced" @(relationshipStatus == "Divorced" ? "checked" : "")>
                             Divorced
                         </label>
                     </div>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="relationship" id="optionsrelation3" value="separated" @(relationshipStatus == "separated" ? "checked" : "")>
+                            <input type="radio" name="relationship" id="optionsrelation3" value="Separated" @(relationshipStatus == "Separated" ? "checked" : "")>
                             Separated
                         </label>
                     </div>
                 </fieldset>
 
-                <fieldset>
-                    <legend>Sporting Interests:</legend>
-                    <div class="checkbox">
-                        <label for="hiking">
-                            <input type="checkbox" id="hiking" value="Hiking" name="sports" @(sportingInterests.Contains("Hiking") ? "checked" : "")>
-                            Hiking
-                        </label>
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 col-lg-6">
+                        <fieldset>
+                            <legend>Sporting Interests:</legend>
+                            <div class="checkbox">
+                                <label for="hiking">
+                                    <input type="checkbox" id="hiking" value="Hiking" name="sports" @(sportingInterests.Contains("Hiking") ? "checked" : "")>
+                                    Hiking
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="gym">
+                                    <input type="checkbox" id="gym" value="Gym Training" name="sports" @(sportingInterests.Contains("Gym Training") ? "checked" : "")>
+                                    Gym Training
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="cycling">
+                                    <input type="checkbox" id="cycling" value="Cycling" name="sports" @(sportingInterests.Contains("Cycling") ? "checked" : "")>
+                                    Cycling
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="dancing">
+                                    <input type="checkbox" id="dancing" value="Dancing" name="sports" @(sportingInterests.Contains("Dancing") ? "checked" : "")>
+                                    Dancing
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="swimming">
+                                    <input type="checkbox" id="swimming" value="Swimming" name="sports" @(sportingInterests.Contains("Swimming") ? "checked" : "")>
+                                    Swimming
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="running">
+                                    <input type="checkbox" id="running" value="Running" name="sports" @(sportingInterests.Contains("Running") ? "checked" : "")>
+                                    Running
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="tennis">
+                                    <input type="checkbox" id="tennis" value="Tennis" name="sports" @(sportingInterests.Contains("Tennis") ? "checked" : "")>
+                                    Tennis
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="rugby">
+                                    <input type="checkbox" id="rugby" value="Rugby" name="sports" @(sportingInterests.Contains("Rugby") ? "checked" : "")>
+                                    Rugby
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="winterS">
+                                    <input type="checkbox" id="winterS" value="Winter Sports" name="sports" @(sportingInterests.Contains("Winter Sports") ? "checked" : "")>
+                                    Winter Sports
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="badm">
+                                    <input type="checkbox" id="badm" value="Badminton" name="sports" @(sportingInterests.Contains("Badminton") ? "checked" : "")>
+                                    Badminton
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="gaa">
+                                    <input type="checkbox" id="gaa" value="Gaa" name="sports" @(sportingInterests.Contains("Gaa") ? "checked" : "")>
+                                    Gaa
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="soccer">
+                                    <input type="checkbox" id="soccer" value="Soccer" name="sports" @(sportingInterests.Contains("Soccer") ? "checked" : "")>
+                                    Soccer
+                                </label>
+                            </div>
+                        </fieldset>
                     </div>
-                    <div class="checkbox">
-                        <label for="gym">
-                            <input type="checkbox" id="gym" value="Gym Training" name="sports" @(sportingInterests.Contains("Gym Training") ? "checked" : "")>
-                            Gym Training
-                        </label>
+                    <div class="col-xs-12 col-md-6 col-lg-6">
+                        <fieldset>
+                            <legend>Cultural Interests:</legend>
+                            <div class="checkbox">
+                                <label for="food">
+                                    <input type="checkbox" id="food" value="Food" name="culture" @(culturalInterests.Contains("Food") ? "checked" : "")>
+                                    Food
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="wine">
+                                    <input type="checkbox" id="wine" value="Fine Wine" name="culture" @(culturalInterests.Contains("Fine Wine") ? "checked" : "")>
+                                    Fine Wine
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="pMusic">
+                                    <input type="checkbox" id="pMusic" value="Pop Music" name="culture" @(culturalInterests.Contains("Pop Music") ? "checked" : "")>
+                                    Pop Music
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="rMusic">
+                                    <input type="checkbox" id="rMusic" value="Rock Music" name="culture" @(culturalInterests.Contains("Rock Music") ? "checked" : "")>
+                                    Rock Music
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="cMusic">
+                                    <input type="checkbox" id="cMusic" value="Classical Music" name="culture" @(culturalInterests.Contains("Classical Music") ? "checked" : "")>
+                                    Classical Music
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="theatre">
+                                    <input type="checkbox" id="theatre" value="Theatre" name="culture" @(culturalInterests.Contains("Theatre") ? "checked" : "")>
+                                    Theatre
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="lit">
+                                    <input type="checkbox" id="lit" value="Literature" name="culture" @(culturalInterests.Contains("Literature") ? "checked" : "")>
+                                    Literature
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="gaming">
+                                    <input type="checkbox" id="gaming" value="Gaming" name="culture" @(culturalInterests.Contains("Gaming") ? "checked" : "")>
+                                    Gaming
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="trad">
+                                    <input type="checkbox" id="trad" value="Traditional Music" name="culture" @(culturalInterests.Contains("Traditional Music") ? "checked" : "")>
+                                    Traditional Music
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label for="cDancing">
+                                    <input type="checkbox" id="cDancing" value="Dancing" name="culture" @(culturalInterests.Contains("Dancing") ? "checked" : "")>
+                                    Dancing
+                                </label>
+                            </div>
+                        </fieldset>
                     </div>
-                    <div class="checkbox">
-                        <label for="cycling">
-                            <input type="checkbox" id="cycling" value="Cycling" name="sports" @(sportingInterests.Contains("Cycling") ? "checked" : "")>
-                            Cycling
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label for="dancing">
-                            <input type="checkbox" id="dancing" value="Dancing" name="sports" @(sportingInterests.Contains("Dancing") ? "checked" : "")>
-                            Dancing
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label for="swimming">
-                            <input type="checkbox" id="swimming" value="Swimming" name="sports" @(sportingInterests.Contains("Swimming") ? "checked" : "")>
-                            Swimming
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label for="running">
-                            <input type="checkbox" id="running" value="Running" name="sports" @(sportingInterests.Contains("Running") ? "checked" : "")>
-                            Running
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label for="tennis">
-                            <input type="checkbox" id="tennis" value="Tennis" name="sports" @(sportingInterests.Contains("Tennis") ? "checked" : "")>
-                            Tennis
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label for="rugby">
-                            <input type="checkbox" id="rugby" value="Rugby" name="sports" @(sportingInterests.Contains("Rugby") ? "checked" : "")>
-                            Rugby
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label for="winterS">
-                            <input type="checkbox" id="winterS" value="Winter Sports" name="sports" @(sportingInterests.Contains("Winter Sports") ? "checked" : "")>
-                            Winter Sports
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label for="badm">
-                            <input type="checkbox" id="badm" value="Badminton" name="sports" @(sportingInterests.Contains("Badminton") ? "checked" : "")>
-                            Badminton
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label for="gaa">
-                            <input type="checkbox" id="gaa" value="Gaa" name="sports" @(sportingInterests.Contains("Gaa") ? "checked" : "")>
-                            Gaa
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label for="soccer">
-                            <input type="checkbox" id="soccer" value="Soccer" name="sports" @(sportingInterests.Contains("Soccer") ? "checked" : "")>
-                            Soccer
-                        </label>
-                    </div>
-                </fieldset>
+                </div>
 
-                <fieldset>
-                    <legend>Cultural Interests:</legend>
-                    <div class="checkbox">
-                        <label for="food">
-                            <input type="checkbox" id="food" value="Food" name="culture" @(culturalInterests.Contains("Food") ? "checked" : "")>
-                            Food
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label for="wine">
-                            <input type="checkbox" id="wine" value="Fine Wine" name="culture" @(culturalInterests.Contains("Fine Wine") ? "checked" : "")>
-                            Fine Wine
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label for="pMusic">
-                            <input type="checkbox" id="pMusic" value="Pop Music" name="culture" @(culturalInterests.Contains("Pop Music") ? "checked" : "")>
-                            Pop Music
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label for="rMusic">
-                            <input type="checkbox" id="rMusic" value="Rock Music" name="culture" @(culturalInterests.Contains("Rock Music") ? "checked" : "")>
-                            Rock Music
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label for="cMusic">
-                            <input type="checkbox" id="cMusic" value="Classical Music" name="culture" @(culturalInterests.Contains("Classical Music") ? "checked" : "")>
-                            Classical Music
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label for="theatre">
-                            <input type="checkbox" id="theatre" value="Theatre" name="culture" @(culturalInterests.Contains("Theatre") ? "checked" : "")>
-                            Theatre
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label for="lit">
-                            <input type="checkbox" id="lit" value="Literature" name="culture" @(culturalInterests.Contains("Literature") ? "checked" : "")>
-                            Literature
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label for="gaming">
-                            <input type="checkbox" id="gaming" value="Gaming" name="culture" @(culturalInterests.Contains("Gaming") ? "checked" : "")>
-                            Gaming
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label for="trad">
-                            <input type="checkbox" id="trad" value="Traditional Music" name="culture" @(culturalInterests.Contains("Traditional Music") ? "checked" : "")>
-                            Traditional Music
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label for="cDancing">
-                            <input type="checkbox" id="cDancing" value="Dancing" name="culture" @(culturalInterests.Contains("Dancing") ? "checked" : "")>
-                            Dancing
-                        </label>
-                    </div>
-                </fieldset>
+
+
+
             </div>
         </div>
         <div class="row">
