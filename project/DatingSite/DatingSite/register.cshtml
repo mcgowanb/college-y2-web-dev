@@ -279,8 +279,7 @@
                 @{
                     if (IsPost)
                     {
-                        var dob = Convert.ToDateTime(dateOfBirth);
-                        var sDob = String.Format("{0:d/M/yyyy}", dob);
+                        var sDob = String.Format("{0:d/MM/yyyy}", Convert.ToDateTime(dateOfBirth));
                         <div class="row">
                             <h2>You have made the following selections:</h2>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
