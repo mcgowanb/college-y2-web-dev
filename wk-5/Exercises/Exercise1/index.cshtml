@@ -1,0 +1,33 @@
+﻿@{ 
+    Validation.Add("name", Validator.Required("Enter your name"));
+    String message = "";
+
+    if (IsPost)
+    {
+        if (Validation.IsValid())
+        {
+            message = "You entered the name: " + Request.Form["name"];
+        }
+       
+    }
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="~/style/style.css" rel="stylesheet" />
+        <title></title>
+    </head>
+    <body>
+
+        <form method="POST">
+            @*Name: @Html.TextBox("name", null, new  { required = "required"} )*@
+            Name: @Html.TextBox("name")
+
+
+            <input type="submit"/>
+            @Html.ValidationMessage("name")
+            <p>@message</p>
+        </form>
+
+    </body>
+</html>
