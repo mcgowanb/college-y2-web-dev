@@ -92,6 +92,7 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="index.cshtml" />
+    <Content Include="page2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

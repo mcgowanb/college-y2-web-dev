@@ -1,0 +1,59 @@
+﻿@{ 
+    Validation.Add("box1", Validator.Required(), Validator.Integer(), Validator.Range(2,10));
+    Validation.Add("box2", Validator.Required(), Validator.Float(), Validator.Range(.5, 1.5));
+    Validation.Add("box3", Validator.Required(), Validator.Integer(), Validator.Range(2, 10));
+    Validation.Add("box4", Validator.DateTime());
+    Validation.Add("box5", Validator.Url());
+
+    String msg = "";
+    if (IsPost && Validation.IsValid())
+    {
+        int answer = Request.Form["box1"].AsInt() + Request.Form["box2"].AsInt();
+        msg = String.Format("The total is {0}", answer);
+
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="~/style/style.css" rel="stylesheet" />
+</head>
+<body>
+    <form method="POST">
+        <label for="box1">
+            Box 1
+            <input type="text" name="box1" id="box1" />
+        </label>
+        @Html.ValidationMessage("box1")
+        <br />
+
+        <label for="box2">
+            Box 2
+            <input type="text" name="box2" id="box2" />
+        </label>
+        @Html.ValidationMessage("box2")
+        <br />
+
+        <label for="box3">
+            Box 2
+            <input type="text" name="box3" id="box3" />
+        </label>
+        @Html.ValidationMessage("box3")
+        <br />
+
+        <label for="box4">
+            Date
+            <input type="text" name="box4" id="box4" value=@(Request.Form["box4"] ?? "") />
+        </label>
+        @Html.ValidationMessage("box4")
+        <br />
+        <label for="box5">
+            URL
+            <input type="text" name="box5" id="box5" value=@Request.Form["box5"] placeholder="http://" />
+        </label>
+        @Html.ValidationMessage("box5")
+        <br /><input type="submit" />
+    </form>
+</body>
+</html>

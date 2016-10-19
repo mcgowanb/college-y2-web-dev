@@ -2,4 +2,6 @@
 }
 .field-validation-error{
     color: red;
+    font-size: .75em;
+    font-style: italic;
 }
