@@ -50,7 +50,7 @@
         <br />
         <label for="box5">
             URL
-            <input type="text" name="box5" id="box5" value=@Request.Form["box5"] placeholder="http://" />
+            <input type="text" name="box5" id="box5" value=@(Request.Form["box5"] ?? "") />
         </label>
         @Html.ValidationMessage("box5")
         <br /><input type="submit" />
