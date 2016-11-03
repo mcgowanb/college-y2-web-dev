@@ -3,5 +3,5 @@ Ireland Phone Number regex
 http://regexstorm.net/tester?p=%28%28%5b0-9%5d%7b10%7d%29%7c%28%5b0-9%5d%7b3%7d%5cs%5b0-9%5d%7b7%7d%29%7c%28%5c%28%5b0-9%5d%7b3%7d%5c%29%5b0-9%5d%7b7%7d%29%29&i=0872891322%0d%0a%28087%292891322%0d%0a087+2891322%0d%0a123+
 
 Registration Number Regex - not entirely correct
-^\d{2}(\s|-|\S)(\w{1,2})(\s|-|\S)\d*
-http://regexstorm.net/tester?p=%5e%5cd%7b2%7d%28%5cs%7c-%7c%5cS%29%28%5cw%7b1%2c2%7d%29%28%5cs%7c-%7c%5cS%29%5cd*&i=00SO12477
+^\d{2}(\s|-|\S)(\w{1,2})(\s|-|\S)\d+
+http://regexstorm.net/tester?p=%5e%5cd%7b2%7d%28%5cs%7c-%7c%5cS%29%28%5cw%7b1%2c2%7d%29%28%5cs%7c-%7c%5cS%29%5cd%2b&i=00-SO-12477

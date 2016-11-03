@@ -1,9 +1,21 @@
 ﻿@using System.Text.RegularExpressions
 @{
+    Validation.Add("fname", Validator.Required("Please enter your first name"));
+    Validation.Add("lname", Validator.Required("Please enter your last name"));
+    Validation.Add("ppsn", Validator.Required("You must enter your PPSN"));
+    Validation.Add("email", Validator.Required("An email address is required"));
+    Validation.Add("gender", Validator.Required("Please select a gender"));
+    Validation.Add("pass", Validator.Required("A password is required"));
+    Validation.Add("pass-conf", Validator.Required());
+    Validation.Add("dob", Validator.DateTime("Incorrect date format entered"));
+    Validation.Add("height", Validator.Range(135, 200, "Height must be between 135 and 200 cm"));
+
+
+
+
+
     String culturalInterests = "";
     String sportingInterests = "";
-
-
     String firstName = Request.Form["fname"];
     String lastName = Request.Form["lname"];
     String dateOfBirth = Request.Form["dob"];
@@ -17,7 +29,7 @@
     String gender = Request.Form["gender"];
     String relationshipStatus = Request.Form["relationship"];
 
-    if (IsPost)
+    if (IsPost && Validation.IsValid())
     {
         sportingInterests = Request.Form["sports"] ?? "";
         culturalInterests = Request.Form["culture"] ?? "";
@@ -26,6 +38,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="~/bootstrap.css" rel="stylesheet" />
     <title>Funky's Dating Site</title>
     <link href="~/style.css" rel="stylesheet" />
@@ -37,25 +50,30 @@
                 <h2>Welcome to Funky's dating website, Please complete the following information to register:</h2>
             </div>
             <div class="col-xs-12">
-                <div class="form-group">
+                <div class="form-group required">
                     <label for="fname"> First Name</label>
-                    <input type="text" name="fname" id="fname" class="form-control" value="@firstName" />
+                    <input type="text" name="fname" id="fname" class="form-control" value="@firstName" ruired="reired" />
+                    @Html.ValidationMessage("fname")
                 </div>
-                <div class="form-group">
+                <div class="form-group required">
                     <label for="lname"> Last Name</label>
                     <input type="text" name="lname" id="lname" class="form-control" value="@lastName" />
+                    @Html.ValidationMessage("lname")
                 </div>
                 <div class="form-group">
                     <label for="dob"> Date Of Birth</label>
                     <input type="date" name="dob" id="dob" class="form-control" value="@dateOfBirth" />
+                    @Html.ValidationMessage("dob")
                 </div>
-                <div class="form-group">
+                <div class="form-group required">
                     <label for="pps"> PPS Number</label>
                     <input type="text" name="ppsn" id="pps" class="form-control" value="@ppsn" />
+                    @Html.ValidationMessage("ppsn")
                 </div>
-                <div class="form-group">
+                <div class="form-group required">
                     <label for="fname"> Email</label>
                     <input type="email" name="email" id="email" class="form-control" value="@email" />
+                    @Html.ValidationMessage("email")
                 </div>
                 <div class="form-group">
                     <label for="phone"> Phone Number:</label>
@@ -64,14 +82,17 @@
                 <div class="form-group">
                     <label for="height"> Height: (cm)</label>
                     <input type="text" name="height" id="height" class="form-control" value="@height" />
+                    @Html.ValidationMessage("height")
                 </div>
                 <div class="form-group">
                     <label for="pass"> Password</label>
                     <input type="password" name="pass" id="pass" class="form-control" value="@password" />
+                    @Html.ValidationMessage("pass")
                 </div>
                 <div class="form-group">
                     <label for="pass-conf"> Confirm Password</label>
                     <input type="password" name="pass-conf" id="pass-conf" class="form-control" value="@passwordConfirm" />
+                    @Html.ValidationMessage("pass-conf")
                 </div>
                 <fieldset>
                     <legend>Gender:</legend>
@@ -93,6 +114,7 @@
                             Other
                         </label>
                     </div>
+                    @Html.ValidationMessage("gender")
                 </fieldset>
                 <fieldset>
                     <legend>Relationship Status:</legend>
@@ -277,9 +299,9 @@
         <div class="row">
             <div class="col-xs-12">
                 @{
-                    if (IsPost)
+                    if (IsPost && Validation.IsValid())
                     {
-                        var sDob = String.Format("{0:d/MM/yyyy}", Convert.ToDateTime(dateOfBirth));
+                        var sDob = (dateOfBirth != null) ? String.Format("{0:d/MM/yyyy}", Convert.ToDateTime(dateOfBirth)) : "";
                         <div class="row">
                             <h2>You have made the following selections:</h2>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -320,7 +342,7 @@
                                 </ul>
                             </div>
                         </div>
-                    }
+                                        }
                 }
             </div>
         </div>
