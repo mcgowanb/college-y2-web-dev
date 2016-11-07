@@ -31,7 +31,7 @@ form .required label:after {
     display: inline;
 }
 
-.field-validation-error {
+.field-validation-error, .validation-summary-errors {
     background: #FFDACC;
     width: 100%;
     -moz-border-radius: 4px;
