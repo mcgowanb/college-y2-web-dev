@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.WebPages;
+using System.Text.RegularExpressions;
+using System.Text;
 
 namespace DatingSite.app_code
 {
@@ -15,53 +17,42 @@ namespace DatingSite.app_code
         }
         protected override bool IsValid(HttpContextBase httpContext, string value)
         {
-            return CalculateCheckSum(value); //some sort of validator
+            return CalculateCheckSum(value);
         }
 
         public bool CalculateCheckSum(string value)
         {
-            Dictionary<int, String> keyMap = GenerateKeyMap();
-            String number = value.Substring(0, value.Length - 1);
-            String actualCharacter = value.Substring(value.Length - 1);
-
-            int counter = 8;
-            int total = 0;
-            foreach (var n in number)
+            String regex = @"^[0-9]{7}[A-Z]{1,2}$";
+            Regex r = new Regex(regex, RegexOptions.IgnoreCase);
+            Match m = r.Match(value);
+            if (m.Success)
             {
-                total += (int)Char.GetNumericValue(n) * counter--;
+                return CheckMOD23(value);
             }
-            int letterNumber = total % 23;
-            String finalCharacter = keyMap[letterNumber];
-            return finalCharacter.Equals(actualCharacter);
+            else return false;
         }
 
-        public Dictionary<int, String> GenerateKeyMap()
+        public bool CheckMOD23(String value)
         {
-            Dictionary<int, String> tmp = new Dictionary<int, string>();
-            tmp.Add(1, "A");
-            tmp.Add(2, "B");
-            tmp.Add(3, "C");
-            tmp.Add(4, "D");
-            tmp.Add(5, "E");
-            tmp.Add(6, "F");
-            tmp.Add(7, "G");
-            tmp.Add(8, "H");
-            tmp.Add(9, "I");
-            tmp.Add(10, "J");
-            tmp.Add(11, "K");
-            tmp.Add(12, "L");
-            tmp.Add(13, "M");
-            tmp.Add(14, "N");
-            tmp.Add(15, "O");
-            tmp.Add(16, "P");
-            tmp.Add(17, "Q");
-            tmp.Add(18, "R");
-            tmp.Add(19, "S");
-            tmp.Add(20, "T");
-            tmp.Add(21, "U");
-            tmp.Add(22, "V");
-            tmp.Add(23, "W");
-            return tmp;
+            int length = value.Length;
+            int total = 0;
+            for (int i = 0; i < 7; ++i)
+            {
+                total += (int)value[i] * (8 - i);
+            }
+
+            byte[] asciiBytes = Encoding.ASCII.GetBytes(value.ToUpper());
+            if (length == 9)
+            {
+                total += ((int)asciiBytes[8] - 64) * 9;
+            }
+
+            int mod = total % 23;
+            if (mod == 0) mod = 23;
+
+            int nV = 63 + mod;
+            int cV = asciiBytes[7];
+            return nV == cV;
         }
     }
 
