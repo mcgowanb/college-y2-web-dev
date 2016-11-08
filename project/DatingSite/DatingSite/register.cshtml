@@ -1,5 +1,5 @@
 ﻿@using System.Text.RegularExpressions
-
+@using DatingSite.app_code;
 @{
 
     String culturalInterests = "";
@@ -9,7 +9,7 @@
     String dateOfBirth = Request.Form["dob"];
     String ppsn = Request.Form["ppsn"];
     String email = Request.Form["email"];
-    String phoneNumber = Request.Form["phone"]; 
+    String phoneNumber = Request.Form["phone"];
     String height = Request.Form["height"];
     String password = Request.Form["pass"];
     String passwordConfirm = Request.Form["pass-conf"];
@@ -19,10 +19,10 @@
 
     Validation.Add("fname", Validator.Required("Please enter your first name"));
     Validation.Add("lname", Validator.Required("Please enter your last name"));
-    Validation.Add("ppsn", 
-        Validator.Required("You must enter your PPSN"), 
+    Validation.Add("ppsn",
+        Validator.Required("You must enter your PPSN"),
         Validator.Regex(@"\b\d{7}([A-Z]|[a-z])$", "PPSN Must be in the format 1234567N"),
-        MyValidator.CustomValidator()
+        MyValidator.CheckSum()
         );
     Validation.Add("email", Validator.Required("An email address is required"), Validator.Regex(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.+[a-zA-Z0-9-.]+$", "Incorrect Email Format"));
     Validation.Add("gender", Validator.Required("Please select a gender"));
@@ -49,10 +49,10 @@
 <body>
     <form method="post">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-6 col-lg-offset-3 col-xs-10 col-xs-offset-1">
                 <h2>Welcome to Funky's dating website, Please complete the following information to register:</h2>
             </div>
-            <div class="col-xs-12">
+            <div class="col-lg-6 col-lg-offset-3 col-xs-10 col-xs-offset-1">
                 <div class="form-group required">
                     <label for="fname"> First Name</label>
                     <input type="text" name="fname" id="fname" class="form-control" value="@firstName" ruired="reired" />
@@ -295,12 +295,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-lg-6 col-lg-offset-3 col-xs-10 col-xs-offset-1">
                 <button class="btn btn-md btn-success" type="submit">Sign me up!!!</button>
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-lg-6 col-lg-offset-3 col-xs-10 col-xs-offset-1">
                 @{
                     if (IsPost && Validation.IsValid())
                     {
@@ -345,7 +345,7 @@
                                 </ul>
                             </div>
                         </div>
-                    }
+                                        }
                 }
             </div>
         </div>
