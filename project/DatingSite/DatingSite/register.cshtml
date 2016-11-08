@@ -1,21 +1,5 @@
 ﻿@using System.Text.RegularExpressions
 @{
-    Validation.Add("fname", Validator.Required("Please enter your first name"));
-    Validation.Add("lname", Validator.Required("Please enter your last name"));
-    Validation.Add("ppsn", Validator.Required("You must enter your PPSN"), Validator.Regex(@"\b\d{7}([A-Z]|[a-z])$", "PPSN Must be in the format 1234567N"));
-    Validation.Add("email", Validator.Required("An email address is required"), Validator.Regex(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.+[a-zA-Z0-9-.]+$", "Incorrect Email Format"));
-    Validation.Add("gender", Validator.Required("Please select a gender"));
-    Validation.Add("pass", Validator.Required("A password is required"), Validator.Regex("[8,]", "Password must be 8 characters or more"));
-    Validation.Add("pass-conf", Validator.Required());
-    Validation.Add("dob", Validator.DateTime("Incorrect date format entered"));
-    Validation.Add("height", Validator.Range(135, 200, "Height must be between 135 and 200 cm"));
-    Validation.Add("phone", Validator.Regex(@"(([0-9]{10})|([0-9]{3}\s?-?[0-9]{7})|(\([0-9]{3}\)\s?[0-9]{7}))", "Incorrect phone number format"));
-    ModelState.AddFormError("There are some problems with the data you entered. Please check this informationa and try again");
-
-
-
-
-
 
     String culturalInterests = "";
     String sportingInterests = "";
@@ -32,6 +16,17 @@
     String gender = Request.Form["gender"];
     String relationshipStatus = Request.Form["relationship"];
 
+    Validation.Add("fname", Validator.Required("Please enter your first name"));
+    Validation.Add("lname", Validator.Required("Please enter your last name"));
+    Validation.Add("ppsn", Validator.Required("You must enter your PPSN"), Validator.Regex(@"\b\d{7}([A-Z]|[a-z])$", "PPSN Must be in the format 1234567N"));
+    Validation.Add("email", Validator.Required("An email address is required"), Validator.Regex(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.+[a-zA-Z0-9-.]+$", "Incorrect Email Format"));
+    Validation.Add("gender", Validator.Required("Please select a gender"));
+    Validation.Add("pass", Validator.Required("A password is required"), Validator.Regex(".{8,}", "Password must be 8 characters or more"));
+    Validation.Add("pass-conf", Validator.Required(), Validator.EqualsTo("pass", "Passwords do not match"));
+    Validation.Add("dob", Validator.DateTime("Incorrect date format entered"));
+    Validation.Add("height", Validator.Range(135, 200, "Height must be between 135 and 200 cm"));
+    Validation.Add("phone", Validator.Regex(@"(([0-9]{10})|([0-9]{3}\s?-?[0-9]{7})|(\([0-9]{3}\)\s?[0-9]{7}))", "Incorrect phone number format"));
+
     if (IsPost && Validation.IsValid())
     {
         sportingInterests = Request.Form["sports"] ?? "";
@@ -45,8 +40,6 @@
     <link href="~/bootstrap.css" rel="stylesheet" />
     <title>Funky's Dating Site</title>
     <link href="~/style.css" rel="stylesheet" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
 </head>
 <body>
     <form method="post">
@@ -55,7 +48,6 @@
                 <h2>Welcome to Funky's dating website, Please complete the following information to register:</h2>
             </div>
             <div class="col-xs-12">
-                @Html.ValidationSummary(true)
                 <div class="form-group required">
                     <label for="fname"> First Name</label>
                     <input type="text" name="fname" id="fname" class="form-control" value="@firstName" ruired="reired" />
