@@ -1,0 +1,25 @@
+﻿@{
+    if (IsPost)
+    {
+        int value = Convert.ToInt32(Request.Form["field"]);
+        if(value < 10)
+        {
+            Response.Redirect("~/page1.cshtml");
+        }
+    }
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <form method="post">
+            <label for="field"> Enter String</label>
+            <input type="text" name="field" id="fname" class="form-control" /><br />
+            <button type="submit">Submit</button><br />
+            
+
+        </form>
+    </body>
+</html>

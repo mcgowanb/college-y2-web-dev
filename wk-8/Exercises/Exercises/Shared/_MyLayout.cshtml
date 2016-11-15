@@ -1,0 +1,18 @@
+﻿@{ 
+    string author = "WebMaster";
+    if (PageData["author"] != null)
+    {
+        author = PageData["author"];
+    }
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        @RenderSection("head", required: false)
+    </head>
+    <body>
+        <h1>This is from the layout page</h1>
+        @RenderBody()
+        <footer> &copy; @author @DateTime.Now.Year</footer>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+﻿@{
+    var message = "Noting was Submitted";
+    if (IsPost)
+    {
+        message = "You entered " + Request.Form["field"];
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    @message
+</body>
+</html>
