@@ -1,0 +1,39 @@
+﻿@{ 
+    String field1 = "", field2 = "";
+
+    Validation.Add("field1", Validator.Required());
+    Validation.Add("field2", Validator.Required(), Validator.Integer("This needs to be an integer"));
+
+    if (IsPost && Validation.IsValid())
+    {
+        Session.Add("value1", Request.Form["field1"]);
+        Session.Add("value2", Request.Form["field2"]);
+
+        Response.Redirect("~/page2.cshtml");
+    }
+    else
+    {
+        field1 = Session["value1"] as String;
+        field2 = Session["value2"] as String;
+    }
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>This is a title</title>
+    </head>
+    <body>
+        <form method="POST" action="#">
+            <label for="field1">Enter String 1</label>
+            <input type="text" name="field1" id="text1" value=@field1/>
+            @Html.ValidationMessage("field1")
+            <br />
+            <label for="field2">Enter String 2</label>
+            <input type="text" name="field2" id="text2" value="@field2"/>
+            @Html.ValidationMessage("field2")
+            <br />
+            <button type="submit">Submit</button><br />
+        </form>
+    </body>
+</html>

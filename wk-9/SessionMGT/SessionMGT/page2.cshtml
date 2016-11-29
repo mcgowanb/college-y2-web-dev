@@ -1,0 +1,20 @@
+﻿@{
+    string value1 ="";
+    string value2 = "";
+
+    if (Session["value1"] != null && Session["value2"] != null)
+    {
+        value1 = Session["value1"] as String;
+        value2 = Session["value2"] as String;
+    }
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <h1>@value1 @value2</h1><br />
+        <a href="~/WebPage1.cshtml">Back to main page</a>
+    </body>
+</html>
