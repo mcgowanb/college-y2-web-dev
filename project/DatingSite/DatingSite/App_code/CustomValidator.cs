@@ -20,6 +20,13 @@ namespace DatingSite.app_code
             return CalculateCheckSum(value);
         }
 
+
+        /// <summary>
+        /// Checeks the PPSN for string length and characters appended after.
+        /// If successful on string length, it also runs through the Mod23 checker
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public bool CalculateCheckSum(string value)
         {
             String regex = @"^[0-9]{7}[A-Z]{1,2}$";
@@ -32,6 +39,12 @@ namespace DatingSite.app_code
             else return false;
         }
 
+        /// <summary>
+        /// Check Mod 23. Checks the Modulus of 23 to ge the remainder for calculating the
+        /// letter associated with the PPSN
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public bool CheckMOD23(String value)
         {
             int length = value.Length;
@@ -58,6 +71,12 @@ namespace DatingSite.app_code
 
     public class MyValidator
     {
+
+        /// <summary>
+        /// Custom implementation of validator for PPSN checksum, uses the new CustomValidator Object
+        /// </summary>
+        /// <param name="errorMessage"></param>
+        /// <returns></returns>
         public static IValidator CheckSum(String errorMessage = null)
         {
             if (String.IsNullOrEmpty(errorMessage))
