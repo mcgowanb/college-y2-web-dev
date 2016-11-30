@@ -1,0 +1,79 @@
+﻿@using DatingSite.App_code;
+@{
+    User user = Session["user"] as User;
+    if (Session["user"] != null)
+    {
+        //user = Session["user"] as User;
+    }
+    else
+    {
+        //Response.Redirect("~/Unauthorized.cshtml");
+    }
+
+    Layout = "~/Shared/Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Summary</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <h3>Thank you. Below is a summary of the details you have entered, please verify if they are correct</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <ul>
+                        <li><strong>First Name:</strong> @user.FirstName</li>
+                        <li><strong>Last Name: </strong>@user.LastName</li>
+                        <li><strong>Date Of Birth: </strong>@user.DateOfBirth</li>
+                        <li><strong>PPS Number: </strong>@user.PPSN</li>
+                        <li><strong>Email: </strong>@user.Email</li>
+                        <li><strong>Phone Number: </strong>@user.PhoneNumber</li>
+                        <li><strong>Height: </strong>@user.Height</li>
+                        <li><strong>Password: </strong>@user.Password</li>
+                        <li><strong>Password Confirmation: </strong>@user.ConfirmPassword</li>
+                        <li><strong>Gender:</strong> @user.Gender</li>
+                        <li><strong>Relationship Status: </strong>@user.Relationship</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <label>Sporting Interests</label>
+                    <ul>
+                        @{
+                            String[] sportsAry = user.SportingInterests.Split(',');
+                            foreach (String elem in sportsAry)
+                            {
+                                <li>@elem</li>
+                            }
+                        }
+                    </ul>
+                    <label>Cultural Interests</label>
+                    <ul>
+                        @{
+                            String[] cultureAry = user.CulturalInterests.Split(',');
+                            foreach (String elem in cultureAry)
+                            {
+                                <li>@elem</li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-lg-offset-3">
+            <a href="~/register.cshtml" class="btn btn-large btn-default btn-block">Edit</a>
+        </div>
+        <div class="col-lg-3">
+            <a href="~/Complete.cshtml" class="btn btn-large btn-success btn-block">Submit</a>
+        </div>
+    </div>
+</body>
+</html>

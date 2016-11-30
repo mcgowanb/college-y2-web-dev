@@ -6,7 +6,7 @@ using System.Web.WebPages;
 using System.Text.RegularExpressions;
 using System.Text;
 
-namespace DatingSite.app_code
+namespace DatingSite.App_code
 {
     public class CustomValidator : RequestFieldValidatorBase
     {

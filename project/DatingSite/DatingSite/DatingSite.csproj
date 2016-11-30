@@ -92,6 +92,7 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="register.cshtml" />
+    <Content Include="Shared\Layout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -104,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_code\CustomValidator.cs" />
+    <Content Include="App_code\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <PropertyGroup>

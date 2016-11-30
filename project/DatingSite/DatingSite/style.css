@@ -1,5 +1,6 @@
 ﻿body {
     margin: 10px auto;
+    width: 95%;
 }
 
 .btn {
@@ -41,4 +42,20 @@ form .required label:after {
     padding: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+footer {
+    margin: 20px 5px;
+    border-top: 1px solid grey;
+    min-width: 100%;
+}
+
+    footer > span {
+        float: right;
+        font-size: .65em;
+    }
+
+#head, #head > h1 {
+    text-align: center;
+    font-weight: bolder;
 }

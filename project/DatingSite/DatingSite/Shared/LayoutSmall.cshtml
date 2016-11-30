@@ -1,0 +1,23 @@
+﻿@{
+    string author = "Funky's Dating Site";
+    if (PageData["owner"] != null)
+    {
+        author = PageData["owner"];
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/bootstrap.css" rel="stylesheet" />
+    <link href="~/style.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    @RenderSection("head", required: false)
+</head>
+<body>
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3 col-xs-10 col-xs-offset-1 jumbotron" id="head">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>
