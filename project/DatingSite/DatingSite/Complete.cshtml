@@ -1,5 +1,16 @@
 ﻿@{
     Layout = "~/Shared/LayoutSmall.cshtml";
+    //clearing session details since form has successfully been submitted
+    if(Session["user"] != null){
+        Session["user"] = null;
+    }
+    else
+    {
+        //no landing here without valid session data
+        Response.Redirect("~/Unauthorised.cshtml");
+    }
+
+
 }
 <!DOCTYPE html>
 <html>

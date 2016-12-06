@@ -3,11 +3,11 @@
     User user = Session["user"] as User;
     if (Session["user"] != null)
     {
-        //user = Session["user"] as User;
+        user = Session["user"] as User;
     }
     else
     {
-        //Response.Redirect("~/Unauthorized.cshtml");
+        Response.Redirect("~/Unauthorised.cshtml");
     }
 
     Layout = "~/Shared/Layout.cshtml";

@@ -2,10 +2,10 @@
 @{
     Layout = "~/Shared/Layout.cshtml";
     PageData["owner"] = "Funky's INC";
+    User user = new User();
 
-    bool validPage = false;
-    String culturalInterests = "";
-    String sportingInterests = "";
+    String culturalInterests = Request.Form["culture"] ?? "";
+    String sportingInterests = Request.Form["sports"] ?? "";
     String firstName = Request.Form["fname"];
     String lastName = Request.Form["lname"];
     String dateOfBirth = Request.Form["dob"];
@@ -33,32 +33,42 @@
     Validation.Add("height", Validator.Range(135, 200, "Height must be between 135 and 200 cm"));
     Validation.Add("phone", Validator.Regex(@"(([0-9]{10})|([0-9]{3}\s?-?[0-9]{7})|(\([0-9]{3}\)\s?[0-9]{7}))", "Incorrect phone number format"));
 
-    if (IsPost)
+    if (IsPost && Validation.IsValid())
     {
-        validPage = Validation.IsValid();
-        sportingInterests = Request.Form["sports"] ?? "";
-        culturalInterests = Request.Form["culture"] ?? "";
 
-        if (validPage)
-        {
-            User user = new User();
-            user.FirstName = firstName;
-            user.LastName = lastName;
-            user.DateOfBirth = dateOfBirth;
-            user.PPSN = ppsn;
-            user.Email = email;
-            user.PhoneNumber = phoneNumber;
-            user.Height = height;
-            user.Password = password;
-            user.ConfirmPassword = passwordConfirm;
-            user.Gender = gender;
-            user.Relationship = relationshipStatus;
-            user.SportingInterests = sportingInterests;
-            user.CulturalInterests = culturalInterests;
+        user.FirstName = firstName;
+        user.LastName = lastName;
+        user.DateOfBirth = dateOfBirth;
+        user.PPSN = ppsn;
+        user.Email = email;
+        user.PhoneNumber = phoneNumber;
+        user.Height = height;
+        user.Password = password;
+        user.ConfirmPassword = passwordConfirm;
+        user.Gender = gender;
+        user.Relationship = relationshipStatus;
+        user.SportingInterests = sportingInterests;
+        user.CulturalInterests = culturalInterests;
 
-            Session.Add("user", user);
-            Response.Redirect("~/Summary.cshtml");
-        }
+        Session.Add("user", user);
+        Response.Redirect("~/Summary.cshtml");
+    }
+    if (!IsPost && Session["user"] != null)
+    {
+        user = Session["user"] as User;
+        firstName = user.FirstName;
+        lastName = user.LastName;
+        dateOfBirth = user.DateOfBirth;
+        ppsn = user.PPSN;
+        email = user.Email;
+        phoneNumber = user.PhoneNumber;
+        height = user.Height;
+        password = user.Password;
+        passwordConfirm = user.ConfirmPassword;
+        gender = user.Gender;
+        relationshipStatus = user.Relationship;
+        sportingInterests = user.SportingInterests;
+        culturalInterests = user.CulturalInterests;
     }
 }
 <!DOCTYPE html>
