@@ -1,0 +1,62 @@
+﻿@{
+    //validators with regular expressions
+    Validation.Add("productCode",
+      Validator.Required("This is a required field"),
+      Validator.Regex(@"[PCpc]+\d{1,5}", "Incorrect product code entered")
+      );
+    Validation.Add("qty",
+      Validator.Required("This is a required field"),
+      Validator.Range(1, 100, "Selection must be between 1 and 100")
+      );
+
+    Validation.Add("price",
+     Validator.Required("This is a required field"),
+     Validator.Range(1.0, 100.0, "Price must be between €1 and €100"),
+     Validator.Regex(@"((\d+)((\.\d{1,2})?))$", "Please enter a decimal value")
+     );
+
+    string product = Request.Form["productCode"];
+    string qty = Request.Form["qty"];
+    string price = Request.Form["price"];
+    string colour = Request.Form["colour"];
+
+
+
+    if (IsPost && Validation.IsValid())
+    {
+        //Redirect to summary page when valiation is correct and adding the form data to the URI as a querystring
+        Response.Redirect("~/displayproduct.cshtml?" + Request.Form);
+    }
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+   
+    <form method="POST">
+        <label for="productCode">Product Code</label>
+        <input type="text" name="productCode" id="p-code" value="@product" />
+        @Html.ValidationMessage("productCode")<br />
+
+        <label for="qty">Quantity</label>
+        <input type="text" name="qty" id="qty" value="@qty" />
+        @Html.ValidationMessage("qty")<br />
+
+        <label for="price">Price €</label>
+        <input type="text" name="price" id="price" value="@price" />
+        @Html.ValidationMessage("price")<br />
+
+        <select name="colour">
+            <option value="Red" @(colour == "Red" ? "selected" : "")>Red</option>
+            <option value="Green" @(colour == "Green" ? "selected" : "")>Green</option>
+            <option value="Blue" @(colour == "Blue" ? "selected" : "")>Blue</option>
+            <option value="Yellow" @(colour == "Yellow" ? "selected" : "")>Yellow</option>
+            <option value="Purple" @(colour == "Purple" ? "selected" : "")>Purple</option>
+        </select><br />
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

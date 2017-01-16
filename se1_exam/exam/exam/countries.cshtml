@@ -1,0 +1,107 @@
+﻿@{
+    //values for persistance
+    String name = Request.Form["name"];
+    String countriesVisited = Request.Form["countries"] ?? "";
+    int countriesSelected = 0;
+    String msg = "";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>S1 Exam</title>
+</head>
+<body>
+
+    <form method="post">
+        <label for="name"> Name</label>
+        <input type="text" name="name" id="name" value="@name" />
+
+        <fieldset>
+            <legend>Countries Visited</legend>
+            <label for="ireland">
+                <input type="checkbox" id="ireland" value="Ireland" name="countries" @(countriesVisited.Contains("Ireland") ? "checked" : "")>
+                Ireland
+            </label>
+            <label for="england">
+                <input type="checkbox" id="england" value="England" name="countries" @(countriesVisited.Contains("England") ? "checked" : "")>
+                England
+            </label>
+            <label for="wales">
+                <input type="checkbox" id="wales" value="Wales" name="countries" @(countriesVisited.Contains("Wales") ? "checked" : "")>
+                Wales
+            </label>
+            <label for="scotland">
+                <input type="checkbox" id="scotland" value="Scotland" name="countries" @(countriesVisited.Contains("Scotland") ? "checked" : "")>
+                Scotland
+            </label>
+            <label for="france">
+                <input type="checkbox" id="france" value="France" name="countries" @(countriesVisited.Contains("France") ? "checked" : "")>
+                France
+            </label>
+            <label for="spain">
+                <input type="checkbox" id="spain" value="Spain" name="countries" @(countriesVisited.Contains("Spain") ? "checked" : "")>
+                Spain
+            </label>
+            <label for="germany">
+                <input type="checkbox" id="germany" value="Germany" name="countries" @(countriesVisited.Contains("Germany") ? "checked" : "")>
+                Germany
+            </label>
+            <label for="belgium">
+                <input type="checkbox" id="belgium" value="Belgium" name="countries" @(countriesVisited.Contains("Belgium") ? "checked" : "")>
+                Belgium
+            </label>
+        </fieldset>
+        <button type="submit">Send Data</button>
+
+    </form>
+
+
+    @{
+        //output message if form is submitted
+        if (IsPost)
+        {
+            <h1>Hello @name</h1>
+            <ul>
+                @{
+                    String[] countries = countriesVisited.Split(',');
+                    countriesSelected = countries.Length;
+                    foreach (var element in countries)
+                    {
+                        <li>@element</li>
+                    }
+                }
+            </ul>
+
+
+                    switch (countriesSelected)
+                    {
+                        case 1:
+                        case 2:
+                            msg = "You need to do more travelling";
+                        break;
+                        case 3:
+                        case 4:
+                        case 5:
+                        case 6:
+                            msg = "You have done some travelling";
+                            break;
+                        case 7:
+                        case 8:
+                            msg = "You are well travelled";
+                        break;
+                        default:
+                            msg = "You have done no travelling";
+                            break;
+                    }
+                    //output for message
+                <p>@msg</p>
+
+                }
+    }
+
+
+    @footer.MakeFooter("Brian McGowan")
+
+</body>
+</html>
